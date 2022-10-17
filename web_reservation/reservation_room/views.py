@@ -8,6 +8,7 @@ from reservation_room.forms import LogMessageForm
 from reservation_room.models import LogMessage
 from reservation_room.models import client
 import pyodbc
+import os
 
 
 # Create your views here.
@@ -43,13 +44,16 @@ def log_message(request):
     else:
         return render(request, "reservation_room/log_message.html", {"form": form})
 
-def reservation_room(request):
-    conn = pyodbc.connect('Driver={SQL Server};'
-                        'ENGINE=mssql'
-                        'Server=DESKTOP-5D4SJ08'
-                        'Database=reservationbdd;' 
-                        
-                        'HOST=localhost;')
+def reservation_room(request):     
+    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};'
+                            'SERVER=FC411-25;'
+                            'DATABASE=reservationbdd;'
+                            'USER=sa;'
+                            'PASSWORD=secret;')
+    #conn = pyodbc.connect("DRIVER={SQL Server},SERVER="+Server+",DATABASE="+Database+",USER="+UserId+",Authentication=ActiveDirectoryInteractive,Encrypt=yes,PASSWORD="+Password)
+    #conn = pyodbc.connect("DRIVER={SQL Server};SERVER="+os.environ.get("DB_SERVER")+";DATABASE="+os.environ.get("DB_NAME")+";USER="+os.environ.get("DB_USER")+";Authentication=ActiveDirectoryInteractive;Encrypt=yes;PASSWORD="+ os.environ.get("DB_PASSWORD"))
+    #conn = pyodbc.connect("DRIVER={SQL Server};SERVER=FC411-25;DATABASE=reservationbdd;USER=sa;PASSWORD=secret")
+
     if request.method == "POST":
         if  request.POST.get('nom') and   request.POST.get('prenom') and +\
             request.POST.get('adresse') and   request.POST.get('telephone') and  +\
