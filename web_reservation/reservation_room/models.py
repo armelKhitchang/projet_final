@@ -17,7 +17,7 @@ class LogMessage(models.Model):
 
 class reservation_room(models.Model): 
     reservationId = models.AutoField(primary_key=True)
-    nom_chambre = models.CharField(max_length=30) 
+    nom_chambre = models.CharField(max_length=150) 
     Checkin  = models.DateTimeField()
     Checkout  = models.DateTimeField()
     nb_adultes = models.IntegerField()
@@ -27,10 +27,10 @@ class reservation_room(models.Model):
     
 class client(models.Model):  
     clientId = models.AutoField(primary_key=True)
-    nom = models.CharField(max_length=30) 
-    prenom = models.CharField(max_length=30) 
-    adresse = models.CharField(max_length=30) 
-    telephone = models.CharField(max_length=30) 
-    email = models.CharField(max_length=30)
+    nom = models.CharField(max_length=150) 
+    prenom = models.CharField(max_length=150) 
+    adresse = models.CharField(max_length=150) 
+    telephone = models.CharField(max_length=100) 
+    email = models.CharField(max_length=150)
     dateNaissance = models.DateTimeField()
     numero_passport = models.IntegerField()

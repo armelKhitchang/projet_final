@@ -77,13 +77,9 @@ WSGI_APPLICATION = 'web_reservation.wsgi.application'
 
 DATABASES = {
     'default': {
-            'ENGINE': 'mssql',
-            'NAME': 'reservationbdd', 
-            'HOST':'localhost', 
-            'OPTIONS': {
-                'driver': 'ODBC Driver 17 for SQL Server',
-            },
-            
+            'ENGINE': os.environ.get('DB_ENGINE'), 
+            'NAME': os.environ.get('DB_NAME'), 
+            'HOST':os.environ.get('DB_PORT'),  
         },
 }
 

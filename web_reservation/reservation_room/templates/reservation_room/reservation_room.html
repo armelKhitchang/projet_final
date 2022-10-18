@@ -7,25 +7,26 @@
 <div class="">
                     
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %} 
         <table>
             <tr>
-                <td> <label for="">Nom</label></td><td><input type="text" placeholder="Nom" name="nom"></td>
+                <td> <label>Nom</label></td><td><input type="text" placeholder="Nom......" name="nom"></td>
             </tr>
             <tr>
-                <td><label for="">Prenom</label></td><td><input type="Prenom" placeholder="prenom" name="prenom"></td>
+                <td><label>Prenom</label></td><td><input type="text" placeholder="prenom......" name="prenom"></td>
             </tr>
-            <tr><td><label for="">Telephone</label></td><td><input type="text" placeholder="Telephone" name="telephone"></td></tr>
+            <tr><td><label>Telephone</label></td><td><input type="tel" placeholder="Telephone......" name="telephone"></td></tr>
 
-            <tr><td> <label for="">Adresse</label></td><td><input type="email" placeholder="email" name="adresse"></td></tr>
+            <tr><td> <label>Adresse</label></td><td><input type="text" placeholder="Adresse....." name="adresse"></td></tr>
 
-            <tr><td> <label for="">Email</label></td><td><input type="email" placeholder="email" name="email"></td></tr>
+            <tr><td> <label>Email</label></td><td><input type="email" placeholder="Email....." name="email"></td></tr>
 
-            <tr><td><label for="">Date de naissance</label></td><td><input type="date" placeholder="date" name="datenaissance"></td></tr>
+            <tr><td><label>Date de naissance</label></td><td><input type="date" placeholder="date" name="datenaissance"></td></tr>
 
-            <tr><td> <label for="">Numero passeport</label></td><td><input type="number" placeholder="number" name="numeropasseport"></td></tr>
-            <tr ><td colspan="2"><button class="button" type="submit" value="insert" onclick="return alert('Record is succefuly')">Enregistrer </button> </td></tr>
-        </table>                     
+            <tr><td> <label>Numero passeport</label></td><td><input type="number" placeholder="Numero Passeport......" name="numeropasseport"></td></tr>
+            </table>  
+            <hr/>
+            <input type="button" value="Creer Client" onclick="return alert('Record is succefuly')"/>                   
          
 
     </form>  

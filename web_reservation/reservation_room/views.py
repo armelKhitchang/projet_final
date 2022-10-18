@@ -7,13 +7,11 @@ from django.shortcuts import redirect
 from reservation_room.forms import LogMessageForm
 from reservation_room.models import LogMessage
 from reservation_room.models import client
-import pyodbc
+import pypyodbc as odbc
+import os
 
 
 # Create your views here.
-"""def reservation_room(request):
-    return render(request, "reservation_room/reservation_room.html")"""
-
 
 def reservation_room_there(request, name):
     return render(
@@ -44,12 +42,10 @@ def log_message(request):
         return render(request, "reservation_room/log_message.html", {"form": form})
 
 def reservation_room(request):
-    conn = pyodbc.connect('Driver={SQL Server};'
-                        'ENGINE=mssql'
-                        'Server=DESKTOP-5D4SJ08'
-                        'Database=reservationbdd;' 
-                        
-                        'HOST=localhost;')
+    conn = odbc.connect('Driver={SQL Server};'
+                      'Server=DESKTOP-5D4SJ08;'
+                      'Database=reservationbdd;'
+                      'Trusted_Connection=yes;')
     if request.method == "POST":
         if  request.POST.get('nom') and   request.POST.get('prenom') and +\
             request.POST.get('adresse') and   request.POST.get('telephone') and  +\
@@ -64,11 +60,14 @@ def reservation_room(request):
             insertstValues.dateNaissance =request.POST.get('datenaissance')
             insertstValues.numero_passport =request.POST.get('numeropasseport') 
             cursor=conn.cursor() 
+            print("INSERT INTO Client VALUES ('"+ insertstValues.nom+"','"+ insertstValues.prenom+"','"+ insertstValues.adresse+"','"+ insertstValues.telephone+"','"+ insertstValues.email+"','"+ insertstValues.dateNaissance+"','"+ insertstValues.numero_passport)
+
+            print("-------------------------------------------------------------------------------------------------------------",cursor)
             cursor.execute("INSERT INTO Client VALUES ('"+ insertstValues.nom+"','"+ insertstValues.prenom+"','"+ insertstValues.adresse+"','"+ insertstValues.telephone+"','"+ insertstValues.email+"','"+ insertstValues.dateNaissance+"','"+ insertstValues.numero_passport+"') ")
             cursor.commit()
-            return render(request, reservation_room.html)
+            return render(request, "reservation_room/reservation_room.html")
     else:
-        return  render(request, reservation_room.html)
+        return  render(request, "reservation_room/reservation_room.html")
             
 
 
