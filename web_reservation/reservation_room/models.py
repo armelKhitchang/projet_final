@@ -1,6 +1,7 @@
 from django.db import models 
 from django.utils import timezone
 
+
 class LogMessage(models.Model):
     message = models.CharField(max_length=300)
     log_date = models.DateTimeField()
@@ -8,10 +9,10 @@ class LogMessage(models.Model):
 
 
     def __str__(self):
-        """Returns a string representation of a message."""
+        #Returns a string representation of a message.
         date = timezone.localtime(self.log_date)
         return f"'{self.message}' logged on {date.strftime('%A, %d %B, %Y at %X')}"
-
+ 
 
 
 
@@ -26,7 +27,7 @@ class reservation_room(models.Model):
     
     
 class client(models.Model):  
-    clientId = models.AutoField(primary_key=True)
+    clientId = models.SmallAutoField(primary_key=True)
     nom = models.CharField(max_length=150) 
     prenom = models.CharField(max_length=150) 
     adresse = models.CharField(max_length=150) 
