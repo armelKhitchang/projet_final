@@ -42,16 +42,21 @@ def log_message(request):
         return render(request, "reservation_room/log_message.html", {"form": form})
 
 def reservation_room(request):
-    driver = "{ODBC Driver 17 for SQL Server}"
-    server = "FC411-25"
+    # driver = "{ODBC Driver 17 for SQL Server}"
+    # server = "FC411-25"
+    # username = "sa" 
+    # password = "secret" 
+    #conn = odbc.connect("DRIVER=" + driver
+    #                + ";SERVER=" + server 
+    #                + ";DATABASE=" + database
+    #                + ";Username=" + username 
+    #                + ";Password=" + password )
+    driver = "{SQL Server}"
+    server = "DESKTOP-5D4SJ08"
     database = "reservationbdd"
-    username = "sa" 
-    password = "secret" 
     conn = odbc.connect("DRIVER=" + driver
                     + ";SERVER=" + server 
-                    + ";DATABASE=" + database 
-                    + ";UID=" + username 
-                    + ";PWD=" + password)
+                    + ";DATABASE=" + database)
                     
     if request.method == "POST":
         if  request.POST.get('nom') and   request.POST.get('prenom') and +\
