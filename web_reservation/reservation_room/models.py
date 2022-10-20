@@ -16,7 +16,7 @@ class LogMessage(models.Model):
 
 
 class reservation_room(models.Model): 
-    reservationId = models.AutoField(primary_key=True)
+    reservationId =models.IntegerField() 
     nom_chambre = models.CharField(max_length=150) 
     Checkin  = models.DateTimeField()
     Checkout  = models.DateTimeField()
